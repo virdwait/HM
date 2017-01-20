@@ -8,7 +8,6 @@ int isPalindrome(char a[10]){
 			return 0;
 		i++;
 	}
-	printf("%s is palindrome",a);
 	return 1;
 }
 
@@ -27,22 +26,27 @@ void main(){
 	j=0;
 	while(i<n){
 		if(isPalindrome(a[i])){
-			k=strlen(a[i])-1;
+			k=strlen(a[i]);
+			b[j][k]='\0';
+			k--;
 			while(k>=0){
 				b[j][k]=a[i][k];
-				k++;
+				k--;
 			}
 			ln[j]=strlen(a[i]);
-			printf("%s\t%d",b[j],ln[j]);
 			j++;
 
 		}
 		i++;
 	}
-	i=0;
+	i=1;
+	k=0;
 	while(i<j){
-		printf("%s\n",b[i]);
+		if(ln[k]>ln[i])
+			k=i;
 		i++;
 	}
+	printf("\nShortest palindrome is %s",b[k]);
+
 	getch();
 }
